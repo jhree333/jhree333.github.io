@@ -4,7 +4,7 @@ import { IPost } from "../../commons/types/types";
 
 export default function PostCard({ post }: { post: IPost }) {
   return (
-    <Link href={`/post/${post.slug}`}>
+    <Link href={`/posts/${post.slug}`}>
       <article>
         <Image
           className="border rounded-lg"
