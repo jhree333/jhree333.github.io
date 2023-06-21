@@ -7,7 +7,7 @@ export default function PostCard({ post }: { post: IPost }) {
     <Link href={`/posts/${post.slug}`}>
       <article>
         <Image
-          className="border rounded-lg"
+          className="border rounded-lg h-40 p-2"
           src={`/${post.frontMatter.image}`}
           width={1200}
           height={700}
