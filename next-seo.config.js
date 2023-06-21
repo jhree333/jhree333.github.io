@@ -1,5 +1,5 @@
 export default {
-  title: "Next.js Blog",
+  title: "jhree333 blog",
   description: "개발과 관련된 것들을 작성하는 블로그입니다.",
   openGraph: {
     type: "website",
