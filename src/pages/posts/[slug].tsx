@@ -1,6 +1,12 @@
-import { IFrontMatter, IPost } from "@/commons/types/types";
+import { IFrontMatter } from "@/commons/types/types";
 import fs from "fs";
 import matter from "gray-matter";
+import { marked } from "marked";
+
+marked.setOptions({
+  mangle: false,
+  headerIds: false,
+});
 
 interface IParams {
   slug: string;
@@ -9,7 +15,6 @@ interface IParams {
 export async function getStaticProps({ params }: { params: IParams }) {
   const file = fs.readFileSync(`posts/${params.slug}.md`, "utf-8");
   const { data, content } = matter(file);
-  console.log(typeof data, typeof content);
   return { props: { frontMatter: data, content } };
 }
 
@@ -36,7 +41,7 @@ export default function Post({
   return (
     <div>
       <h2>{frontMatter.title}</h2>
-      <p>{content}</p>
+      <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
     </div>
   );
 }
