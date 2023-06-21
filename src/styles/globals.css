@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 목차 클릭시 목차 헤딩이 가려지지 않게 하기위해*/
+:target::before {
+  content: "";
+  display: block;
+  height: 72px;
+  margin-top: -72px;
+  visibility: hidden;
+}
