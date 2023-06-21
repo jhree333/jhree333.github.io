@@ -39,7 +39,7 @@ export default function Post({
   content: string;
 }) {
   return (
-    <div>
+    <div className="prose">
       <h2>{frontMatter.title}</h2>
       <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
     </div>
