@@ -9,6 +9,39 @@ import rehypeStringify from "rehype-stringify";
 import { NextSeo } from "next-seo";
 import remarkToc from "remark-toc";
 import remarkPrism from "remark-prism";
+import { createElement, Fragment, ReactNode } from "react";
+import rehypeParse from "rehype-parse";
+import rehypeReact from "rehype-react";
+import Link from "next/link";
+
+const MyLink = ({ children, href }: { children: ReactNode; href: string }) => {
+  if (href === "") href = "/";
+  return href.startsWith("/") || href.startsWith("#") ? (
+    <Link href={href}>{children}</Link>
+  ) : (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+};
+
+const toReactNode = (content: string) => {
+  return (
+    unified()
+      .use(rehypeParse, {
+        fragment: true,
+      })
+      // @ts-ignore
+      .use(rehypeReact, {
+        createElement,
+        Fragment,
+        components: {
+          a: MyLink,
+        },
+      })
+      .processSync(content).result
+  );
+};
 
 interface IParams {
   slug: string;
@@ -73,7 +106,8 @@ export default function Post({
       <div className="prose prose-lg max-w-none">
         <h2 className="mt-12">{frontMatter.title}</h2>
         <time>{frontMatter.date}</time>
-        <div dangerouslySetInnerHTML={{ __html: content }}></div>
+        {/* <div dangerouslySetInnerHTML={{ __html: content }}></div> */}
+        {toReactNode(content)}　
       </div>
     </>
   );
