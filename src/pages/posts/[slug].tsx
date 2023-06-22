@@ -8,6 +8,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { NextSeo } from "next-seo";
 import remarkToc from "remark-toc";
+import remarkPrism from "remark-prism";
 
 interface IParams {
   slug: string;
@@ -19,6 +20,9 @@ export async function getStaticProps({ params }: { params: IParams }) {
 
   const result = await unified()
     .use(remarkParse)
+    .use(remarkPrism, {
+      plugins: ["line-numbers"],
+    })
     .use(remarkToc, {
       heading: "목차",
     })
