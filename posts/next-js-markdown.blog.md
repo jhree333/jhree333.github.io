@@ -5,6 +5,10 @@ description: "Next.js에서 markdown 파일을 이용한 블로그 구축 방법
 image: nextjs.png
 ---
 
+![Next.js이미지](http://localhost:3000/nextjs.png)
+
+<!-- <img src="http://localhost:3000/nextjs.png" alt="Next.js이미지" width="1024" height="679" /> -->
+
 ### 목차
 
 Next.js를 사용하여 Markdown 블로그 사이트를 처음부터 구축해 보겠습니다.

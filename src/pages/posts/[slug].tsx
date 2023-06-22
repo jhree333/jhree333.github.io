@@ -12,7 +12,17 @@ import remarkPrism from "remark-prism";
 import { createElement, Fragment, ReactNode } from "react";
 import rehypeParse from "rehype-parse";
 import rehypeReact from "rehype-react";
+import remarkUnwrapImages from "remark-unwrap-images";
 import Link from "next/link";
+import Image from "next/image";
+
+const MyImage = ({ src, alt }: { src: string; alt: string }) => {
+  return (
+    <div className="relative max-w-full h-96">
+      <Image src={src} alt={alt} fill style={{ objectFit: "contain" }} />
+    </div>
+  );
+};
 
 const MyLink = ({ children, href }: { children: ReactNode; href: string }) => {
   if (href === "") href = "/";
@@ -37,6 +47,7 @@ const toReactNode = (content: string) => {
         Fragment,
         components: {
           a: MyLink,
+          img: MyImage,
         },
       })
       .processSync(content).result
@@ -58,10 +69,12 @@ export async function getStaticProps({ params }: { params: IParams }) {
     })
     .use(remarkToc, {
       heading: "목차",
+      tight: true,
     })
-    .use(remarkRehype)
+    .use(remarkUnwrapImages)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
 
   return {
