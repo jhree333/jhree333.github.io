@@ -3,6 +3,7 @@ title: "Next.js로 markdown 블로그 구축하기"
 date: "2023-06-20"
 description: "Next.js에서 markdown 파일을 이용한 블로그 구축 방법을 설명합니다."
 image: nextjs.png
+categories: ["react"]
 ---
 
 ![Next.js이미지](http://localhost:3000/nextjs.png)

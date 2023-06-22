@@ -3,6 +3,7 @@ title: "HTTP status code"
 date: "2023-06-21"
 description: "HTTP status code를 알아보자"
 image: http-status-codes.png
+categories: ["http"]
 ---
 
 클라우드 환경에서 HTTP API를 통해 통신하는 것이 대부분임

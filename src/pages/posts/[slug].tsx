@@ -1,4 +1,4 @@
-import { IFrontMatter } from "@/commons/types/types";
+import { IFrontMatter, IParams } from "@/commons/types/types";
 import fs from "fs";
 import matter from "gray-matter";
 import { unified } from "unified";
@@ -53,10 +53,6 @@ const toReactNode = (content: string) => {
       .processSync(content).result
   );
 };
-
-interface IParams {
-  slug: string;
-}
 
 export async function getStaticProps({ params }: { params: IParams }) {
   const file = fs.readFileSync(`posts/${params.slug}.md`, "utf-8");
@@ -119,7 +115,13 @@ export default function Post({
       <div className="prose prose-lg max-w-none">
         <h2 className="mt-12">{frontMatter.title}</h2>
         <time>{frontMatter.date}</time>
-        {/* <div dangerouslySetInnerHTML={{ __html: content }}></div> */}
+        <div className="space-x-2">
+          {frontMatter.categories.map((category) => (
+            <span key={category}>
+              <Link href={`/categories/${category}`}>{category}</Link>
+            </span>
+          ))}
+        </div>
         {toReactNode(content)}　
       </div>
     </>
