@@ -13,4 +13,5 @@ export interface IPost {
 export interface IParams {
   slug: string;
   category: string;
+  page: number;
 }
