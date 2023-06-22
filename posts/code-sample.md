@@ -3,6 +3,7 @@ title: "test code sample"
 date: "2023-06-22"
 description: "test code sample 테스트"
 image: test-code.png
+categories: ["etc"]
 ---
 
 ```js[class="line-numbers"]
