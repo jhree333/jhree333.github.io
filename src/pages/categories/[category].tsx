@@ -33,7 +33,7 @@ export const getStaticProps = ({ params }: { params: IParams }) => {
 };
 
 export const getStaticPaths = () => {
-  const categories = ["react", "http", "etc"];
+  const categories = ["react", "http", "etc", "javascript"];
   const paths = categories.map((category) => ({ params: { category } }));
 
   return {
