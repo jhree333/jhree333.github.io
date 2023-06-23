@@ -7,10 +7,11 @@ export default function PostCard({ post }: { post: IPost }) {
     <Link href={`/posts/${post.slug}`}>
       <article>
         <Image
-          className="border rounded-lg h-40 p-2"
+          className="border rounded-lg h-40 p-1"
           src={`/${post.frontMatter.image}`}
-          width={1200}
-          height={700}
+          width={500}
+          height={500}
+          style={{ objectFit: "contain" }}
           alt={post.frontMatter.title}
         />
         <div className="px-2 py-4">
