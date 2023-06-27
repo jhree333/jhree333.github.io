@@ -124,7 +124,7 @@ b. preventDefault()는 이벤트를 취소할 수 있는 경우 이벤트 취소
 
 ## 이벤트 리스너 추가
 
-1. html 요소에 속성 할당
+### html 요소에 속성 할당
 
 ```html[class="line-numbers"]
 <!DOCTYPE html>
@@ -144,11 +144,13 @@ b. preventDefault()는 이벤트를 취소할 수 있는 경우 이벤트 취소
 </html>
 ```
 
-2. DOM 프로퍼티로 할당
+<br>
+
+### DOM 프로퍼티로 할당
 
 - 하나의 이벤트 핸들러만 할당 가능(새로운 이벤트 리스너 할당시 기존값 덮음)
 
-```html[class='line-numbers]
+```html[class="line-numbers"]
 <!DOCTYPE html>
 <html>
 <head>
@@ -169,7 +171,9 @@ b. preventDefault()는 이벤트를 취소할 수 있는 경우 이벤트 취소
 </html>
 ```
 
-3. addEventListener 사용(권장)
+<br>
+
+### addEventListener 사용(권장)
 
 - 여러개 리스너 등록 가능
 - 정밀한 제어(버블링,캡처링 사용)
