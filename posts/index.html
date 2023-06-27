@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM 이벤트 예시</title>
+  </head>
+  <body>
+    <div id="myElement">
+      <button id="myButton">Click Me</button>
+    </div>
+
+    <script>
+      // 이벤트 핸들러 함수
+      function eventHandler(event) {
+        // <button id="myButton">
+        console.log("target:", event.target); // 이벤트가 발생한 요소를 가리킴
+
+        // <div id="myElement">
+        console.log("currentTarget:", event.currentTarget); // 이벤트 핸들러가 등록된 요소를 가리킴
+      }
+
+      // 이벤트 핸들러 등록
+      const element = document.getElementById("myElement");
+      element.addEventListener("click", eventHandler);
+    </script>
+  </body>
+</html>
