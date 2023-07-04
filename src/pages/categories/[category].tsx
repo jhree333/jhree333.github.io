@@ -41,6 +41,7 @@ export const getStaticPaths = () => {
     "math",
     "dom",
     "browser",
+    "network",
   ];
   const paths = categories.map((category) => ({ params: { category } }));
 
